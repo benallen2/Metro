@@ -1,0 +1,84 @@
+body{
+	background-color: black;
+}
+.navbar{
+	background-color: white;
+	color: black;
+	height: 120px;
+}
+
+#titleContainer{
+	width: 100%;
+
+}
+
+#metrologo{
+	height: 100px;
+	width: 90px;
+	margin-top: 8px;
+
+}
+#title{
+	clear: left;
+}
+
+#linerow{
+	padding-top: 100px;
+}
+
+.dropdown{
+	float: right;
+	margin-top: 30px;
+	margin-right: 30px;
+}
+
+.btn{
+	background-color: black;
+	color: white;
+}
+
+.linebar{
+	height: 20px;
+	background-color: red;
+	margin-top: 23px;
+
+}
+
+.station{
+	border: solid 5px white;
+	border-radius: 50%;
+	height: 70px;
+
+}
+
+.stationLabel{
+	color: white;
+	font-size: 18px;
+	-webkit-transform: rotate(315deg);
+	-moz-transform: rotate(315deg);
+	-o-transform: roatate(315deg);
+}
+
+#stationnames{
+	margin-top: 50px;
+}
+
+.info{
+	color: white;
+	font-size: 24px;
+}
+
+#arrival{
+	color: white;
+	font-size: 36px;
+}
+
+.maininfo{
+	margin: 0px 0px 10px 10px;
+}
+#linecolor{
+	color: red;
+}
+span{
+	color: red;
+}

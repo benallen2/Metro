@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous"><!-- font Awesome -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> <!-- bootstrap -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- bootstrap -->
+	<meta name="viewport" content="width=device-width">
+	<meta charset="UTF-8">
+	<title>Metro Better</title>
+	<link href="Metro.css" rel="stylesheet" type="text/css">
+	<script src="Metro.js" rel = "stylesheet" type="text/javascript"></script>
+</head>
+<body>
+<div class="container" id="titleContainer">
+	<div class="row">
+		<div class="navbar">
+			<div class="col-xs-2" id="logodiv">
+				<img id="metrologo" src="MetroLogo.png">
+			</div>
+			<div class="col-xs-5">
+				<h1 id="title">metro better.</h1>
+			</div>
+			<div class="dropdown">
+				<button class="btn btn-default dropdown-toggle" type="button" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					Choose your station
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" aria-labelledby="dropdown1">
+					<li><a href="#">Friendship Heights</a></li>
+					<li><a href="#">Tenleytown/AU</a></li>
+					<li><a href="#">Van Ness/UDC</a></li>
+					<li><a href="#">Cleveland Park</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-8 maininfo">
+			<div class="row">
+				<h2 class="info" id="arrival">Next Train: <span id="arriveTime"></span></h2>
+			</div>
+			<div class="row">
+				<h4 class="info">Line: <span id="linecolor">Red</span></h4>
+			</div>
+			<div class="row">
+				<h4 class="info">Destination: <span id="destination"></span></h4>
+			</div>
+			<div class="row">
+				<h4 class="info">Number of Cars: <span id="carsnumber"></span></h4>
+			</div>
+
+		</div>
+			<div class="col-xs-4 additionalinfo">
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+	<div class="row" id="stationnames">
+		<div class="col-xs-2 col-xs-offset-1 stationLabel" id="prevStation3Label">Friendship Heights</div>
+		<div class="col-xs-2 col-xs-offset-1 stationLabel" id="prevStation2Label">Tenleytown/AU</div>
+		<div class="col-xs-2 col-xs-offset-1 stationLabel" id="prevStation1Label">Van Ness/UDC</div>
+		<div class="col-xs-2 col-xs-offset-1 stationLabel" id="yourStationLabel">Cleveland Park</div>
+	</div>	
+	<!-- Line graphic -->
+	<div class="row" id="linerow">
+		<div class="linebar col-xs-1">
+		</div>
+		<div class="station col-xs-1" id="prevStation3">
+		</div>
+		<div class="linebar col-xs-2">
+		</div>
+		<div class="station col-xs-1" id="prevStation2">
+		</div>
+		<div class="linebar col-xs-2">
+		</div>
+		<div class="station col-xs-1" id="prevStation1">
+		</div>
+		<div class="linebar col-xs-2">
+		</div>
+		<div class="station col-xs-1" id="yourStation">
+		</div>
+		<div class="linebar col-xs-1">
+		</div>
+	</div>
+</div>
+									
+
+
+
+
+
+</body>
+</html>
