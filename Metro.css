@@ -82,3 +82,40 @@ body{
 span{
 	color: red;
 }
+/* Modal styles*/
+
+.modal-header{
+	color: white;
+	background-color: black;
+}
+
+.modal-body{
+	background-color: black;
+}
+.lineBtn{
+	border: none;
+}
+#RD{
+	background: red;
+	color: white;
+}
+#GR{
+	background: green;
+	color: white;
+}
+#YL{
+	background: #EDCE00;
+	color: white;
+}
+#BL{
+	background: blue;
+	color: white;
+}
+#OR{
+	background: #FF7C0A;
+	color: white;
+}
+#SV{
+	background: grey;
+	color: white
+}
