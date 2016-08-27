@@ -5,11 +5,10 @@ body{
 	background-color: white;
 	color: black;
 	height: 120px;
-}
-
-#titleContainer{
-	width: 100%;
-
+	z-index: 200;
+	position: fixed;
+	width: 100%:
+	border-radius: 0;
 }
 
 #metrologo{
@@ -81,30 +80,89 @@ body{
 }
 span{
 	color: red;
+	/*this should actually change with linebar selection */
 }
-/* Modal styles*/
-
-.modal-header{
+/* Line Menu styles*/
+#lineModal {
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	z-index: 100;
+	background-color: #111;
+	padding-top: 150px;
+	transition: : 0.5s;
 	color: white;
-	background-color: black;
+	text-align: center;
 }
 
-.modal-body{
-	background-color: black;
+.sidenav div {
+	padding: 8px 8px 8px 32px;
+	text-align: center;
+	font-size: 25px;
+	display: block;
+	transition: 0.3s;
+	cursor: pointer;
+	opacity: 0.5;
 }
+.sidenav div:hover {
+	opacity: 1;
+}
+/* Station Menu */
+#stationMenu {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 50;
+	top: 0;
+	let: 0;
+	background-color: black;
+	color: white;
+	padding-top: 150px;
+	transition: 0.5s;
+	overflow-x: auto;
+}
+#stationList li {
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 16px;
+	/* set color on list population */
+	display: block;
+	opacity: 0.6;
+}
+.closebtn {
+	position: absolute;
+	top: 155px;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
+	color: white;
+	text-decoration: none;
+}
+
+#stationList li:hover {
+	opacity: 1;
+}
+#main {
+	transition: margin-left .5s;
+	padding: 20px;
+	padding-top: 150px
+}
+
+
+/* Line Styles */
 .lineBtn{
 	border: none;
 }
 #RD{
-	background: red;
+	background-color: red;
 	color: white;
 }
 #GR{
-	background: green;
+	background-color: green;
 	color: white;
 }
 #YL{
-	background: #EDCE00;
+	background-color: #EDCE00;
 	color: white;
 }
 #BL{

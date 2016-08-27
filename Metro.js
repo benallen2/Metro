@@ -48,8 +48,10 @@ var silverLine = ["Wiehle-Reston East", "Spring Hill", "Greensboro", "Tysons Cor
 
 
 function lineSelect () {
-	$("#lineModal").modal("show");
+	$("#lineModal").show();
 	$(".lineBtn").click(function(){
+		$("#main").show();
+		$("#lineModal").fadeOut(300);
 		lineCode = $(this).attr("id");
 		switch (lineCode){
 			case "RD":
@@ -81,21 +83,33 @@ function lineSelect () {
 			userLine = redLine;
 			break;
 		}//switch for setting line color
+		console.log(lineCode);
 			$(".linebar").css("background-color", lineColor);
 			for (var i = 0; i < userLine.length; i++){
-				console.log(userLine[i]);
+				$("#stationList").append("<li>" + userLine[i] + "</li>");
+				$("#stationList").css("color", lineColor);
 			}
-
+			openListMenu();
 	});
 }
+function openListMenu (){
+	$("#stationMenu").show();
+	document.getElementById("stationMenu").style.width = "370px";
+	document.getElementById("main").style.marginLeft = "370px";
+	document.getElementById("main").style.opacity = "0.3";
 
+}
+
+function closeNav (){
+	document.getElementById("stationMenu").style.width = "0";
+	document.getElementById("main").style.width = "0";
+	document.getElementById("main").style.opacity = "1";
+	$("#stationMenu").hide();
+}
 
 $(document).ready(function(){
 	lineSelect();
-	console.log(redLine.length);
-	console.log(orangeLine.length);
-	console.log(yellowLine.length);
-	console.log(blueLine.length);
-	console.log(silverLine.length);
-	console.log(greenLine.length);
+	$("#stationMenu").hide();
+	$("#main").hide();
+
 })
