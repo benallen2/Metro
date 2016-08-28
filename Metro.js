@@ -83,7 +83,6 @@ function lineSelect () {
 			userLine = redLine;
 			break;
 		}//switch for setting line color
-		console.log(lineCode);
 			$(".linebar").css("background-color", lineColor);
 			for (var i = 0; i < userLine.length; i++){
 				$("#stationList").append("<li>" + userLine[i] + "</li>");
@@ -92,7 +91,7 @@ function lineSelect () {
 			openListMenu();
 	});
 }
-function openListMenu (){
+function openListMenu () {
 	$("#stationMenu").show();
 	document.getElementById("stationMenu").style.width = "370px";
 	document.getElementById("main").style.marginLeft = "370px";
@@ -100,16 +99,25 @@ function openListMenu (){
 
 }
 
-function closeNav (){
+function closeNav () {
 	document.getElementById("stationMenu").style.width = "0";
 	document.getElementById("main").style.width = "0";
 	document.getElementById("main").style.opacity = "1";
 	$("#stationMenu").hide();
 }
 
+function openDirection () {
+	document.getElementById("directionMenu").style.width = "370px";
+	document.getElementById("main").style.marginLeft = "370px";
+	document.getElementById("main").style.opacity = "0.3";
+
+
+}
+
 $(document).ready(function(){
 	lineSelect();
 	$("#stationMenu").hide();
+	$("#directionMenu").hide();
 	$("#main").hide();
 
 })
