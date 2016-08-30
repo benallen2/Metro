@@ -171,9 +171,7 @@ var silverLine = [{"name":"Ashburn", "id":"N12"},
 {"name":"Largo Town Center", "id":"G05"}];
 
 
-
-
-/*
+function wait (){
 	$(function() {
 		var params = {
 				"api_key": "abc3f2f368624a3b95358b442ceb43d5",
@@ -181,7 +179,7 @@ var silverLine = [{"name":"Ashburn", "id":"N12"},
 		};
 
 		$.ajax({
-				url: "https://api.wmata.com/StationPrediction.svc/json/GetPrediction/A05?" + $.param(params),
+				url: "https://api.wmata.com/StationPrediction.svc/json/GetPrediction/" + stationCode + "?" + $.param(params),
 				type: "GET",
 		})
 		.done(function(data) {
@@ -203,7 +201,7 @@ var silverLine = [{"name":"Ashburn", "id":"N12"},
 				alert("error");
 		});
 });
-*/
+}
 
 
 function lineSelect () {
@@ -269,6 +267,7 @@ function stationSelect() {
 				console.log(prevStation1);
 				console.log(prevStation2);
 				console.log(prevStation3);
+				wait();
 			}
 		}
 		$("#directionList").append("<li>" + userLine[0].name + "</li>");
@@ -298,7 +297,7 @@ function openDirection () {
 		document.getElementById("main").style.opacity = "1";
 		$("#directionMenu").hide();
 			if($(this).html() === userLine[0].name){
-				prevStation1 = //TODO GET THIS SHIT LOGIC'D DAMN.;
+				prevStation1 = //TODO GET THIS SHIT LOGIC'D DAMN. Might need to push to an array the correct id and name of station.
 				console.log(prevStation1);
 			}
 			else if ($(this).html() === userLine[userLine.length - 1].name){
