@@ -107,6 +107,7 @@ span{
 .sidenav div:hover {
 	opacity: 1;
 }
+
 /* Station Menu */
 #stationMenu {
 	height: 100%;
@@ -115,7 +116,7 @@ span{
 	z-index: 50;
 	top: 0;
 	let: 0;
-	background-color: black;
+	background-color: #212121;
 	color: white;
 	padding-top: 150px;
 	transition: 0.5s;
@@ -128,7 +129,7 @@ span{
 	/* set color on list population */
 	display: block;
 	opacity: 0.6;
-	border-bottom: solid 2px #9A9B9C
+	border-bottom: solid 2px #3F4040
 }
 .closebtn {
 	position: absolute;
@@ -143,12 +144,40 @@ span{
 #stationList li:hover {
 	opacity: 1;
 }
+
+/*Direciton list*/
+#directionMenu {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 50;
+	top: 0;
+	let: 0;
+	background-color: #212121;
+	color: white;
+	padding-top: 150px;
+	transition: 0.5s;
+	overflow-x: auto;
+}
+#directionList li {
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 16px;
+	/* set color on list population */
+	display: block;
+	opacity: 0.6;
+	border-bottom: solid 2px #3F4040
+}
+
+#directionList li:hover {
+	opacity: 1;
+}
+
 #main {
 	transition: margin-left .5s;
 	padding: 20px;
 	padding-top: 150px
 }
-
 
 /* Line Styles */
 .lineBtn{

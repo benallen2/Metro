@@ -4,6 +4,9 @@ var lineColor = "";
 var direction = "";// trains N+E bound are 1, S + W bound are 2
 var userStation = "";
 var stationCode = "";
+var prevStation1 = "";
+var prevStation2 = "";
+var prevStation3 = "";
 
 //line arrays need to convert these to objects with Ids
 var redLine = [{"name":"Shady Grove", "id":"A15"},
@@ -109,13 +112,63 @@ var greenLine = [{"name":"Branch Ave", "id":"F11"},
 {"name":"Georgia Ave-Petworth", "id":"E05"},
 {"name":"Fort Totten", "id":"E06"}, {"name":"West Hyattsville", "id":"E07"}, {"name":"Prince George's Plaza", "id":"E08"}, {"name":"College Park-UMD", "id":"E09"}, {"name":"Greenbelt", "id":"E10"}];
 
-var yellowLine = ["Huntington", "Eisenhower Ave", "King Street-Old Town", "Braddock Road", "Potomac Yard", "Ronald Reagan Washington National Airport", "Crystal City", "Pentagon City", "Pentagon", "L'Enfant Plaza", "Archives-Navy Memorial-Penn Quarter", "Gallery Place", "Mount Vernon Square", "Shaw-Howard University", "U Street", "Columbia Heights", "Georgia Ave-Petworth", "Fort Totten", "West Hyattsville", "Prince George's Plaza", "College Park-UMD", "Greenbelt"];
+var yellowLine = [{"name":"Huntington", "id":"C15"},
+{"name":"Eisenhower Ave", "id":"C14"},
+{"name":"King Street-Old Town", "id":"C13"},
+{"name":"Braddock Road", "id":"C12"},
+{"name":"Potomac Yard", "id":"C11"},
+{"name":"Ronald Reagan Washington National Airport", "id":"C10"},
+{"name":"Crystal City", "id":"C09"},
+{"name":"Pentagon City", "id":"C08"},
+{"name":"Pentagon", "id":"C07"},
+{"name":"L'Enfant Plaza", "id":"F03"},
+{"name":"Archives-Navy Memorial-Penn Quarter", "id":"F02"},
+{"name":"Gallery Place", "id":"F01"},
+{"name":"Mount Vernon Square", "id":"E01"},
+{"name":"Shaw-Howard University", "id":"E02"},
+{"name":"U Street", "id":"E03"},
+{"name":"Columbia Heights", "id":"E04"},
+{"name":"Georgia Ave-Petworth", "id":"E05"},
+{"name":"Fort Totten", "id":"E06"},
+{"name":"West Hyattsville", "id":"E07"},
+{"name":"Prince George's Plaza", "id":"E08"},
+{"name":"College Park-UMD", "id":"E09"},
+{"name":"Greenbelt", "id":"E10"}];
 
-
-
-
-
-var silverLine = ["Wiehle-Reston East", "Spring Hill", "Greensboro", "Tysons Corner", "McLean", "East Falls Church", "Ballston-MU", "Virginia Square-GMU", "Clarendon", "Court House", "Rosslyn", "Foggy Bottom-GWU", "Farragut West", "McPherson Square", "Metro Center", "Federal Triangle", "Smithsonian", "L'Enfant Plaza", "Federal Center SW", "Capitol South", "Eastern Market", "Potomac Ave", "Stadium-Armory", "Benning Road", "Capitol Heights", "Addison Road", "Morgan Boulevard", "Largo Town Center"]
+var silverLine = [{"name":"Ashburn", "id":"N12"},
+{"name":"Loudoun Gateway", "id":"N11"},
+{"name":"Washington Dulles International Airport", "id":"N10"},
+{"name":"Innovation Center", "id":"N09"},
+{"name":"Herndon", "id":"N08"},
+{"name":"Reston Town Center", "id":"N07"},
+{"name":"Wiehle-Reston East", "id":"N06"},
+{"name":"Spring Hill", "id":"N04"},
+{"name":"Greensboro", "id":"N03"},
+{"name":"Tysons Corner", "id":"N02"},
+{"name":"McLean", "id":"N01"},
+{"name":"East Falls Church", "id":"K05"},
+{"name":"Ballston-MU", "id":"K04"},
+{"name":"Virginia Square-GMU", "id":"K03"},
+{"name":"Clarendon", "id":"K02"},
+{"name":"Court House", "id":"K01"},
+{"name":"Rosslyn", "id":"C05"},
+{"name":"Foggy Bottom-GWU", "id":"C04"},
+{"name":"Farragut West", "id":"C03"},
+{"name":"McPherson Square", "id":"C02"},
+{"name":"Metro Center", "id":"C01"},
+{"name":"Federal Triangle", "id":"D01"},
+{"name":"Smithsonian", "id":"D02"},
+{"name":"L'Enfant Plaza", "id":"D03"},
+{"name":"Federal Center SW", "id":"D04"},
+{"name":"Capitol South", "id":"D05"},
+{"name":"Eastern Market", "id":"D06"},
+{"name":"Potomac Ave", "id":"D07"},
+{"name":"Stadium-Armory", "id":"D08"},
+{"name":"Benning Road", "id":"G01"},
+{"name":"Capitol Heights", "id":"G02"},
+{"name":"Addison Road", "id":"G03"},
+{"name":"Morgan Boulevard", "id":"G04"},
+{"name":"Largo Town Center", "id":"G05"}];
 
 
 
@@ -159,6 +212,7 @@ function lineSelect () {
 		$("#main").show();
 		$("#lineModal").fadeOut(300);
 		lineCode = $(this).attr("id");
+
 		switch (lineCode){
 			case "RD":
 			lineColor = "red";
@@ -191,7 +245,7 @@ function lineSelect () {
 		}//switch for setting line color
 			$(".linebar").css("background-color", lineColor);
 			for (var i = 0; i < userLine.length; i++){
-				$("#stationList").append("<li>" + userLine[i] + "</li>");
+				$("#stationList").append("<li>" + userLine[i].name + "</li>");//creating the menu station list with names
 				$("#stationList").css("color", lineColor);
 			}
 			openListMenu();
@@ -209,13 +263,18 @@ function stationSelect() {
 	$("li").click(function(){
 		userStation = $(this).html();
 		for (var i = 0; i < userLine.length; i++){
-			if (userLine[i] === userStation){
-				stationCode = redCode[i];
-				console.log(stationCode)
+			if (userLine[i].name === userStation){
+				stationCode = userLine[i].id;
+				console.log(userStation);
+				console.log(prevStation1);
+				console.log(prevStation2);
+				console.log(prevStation3);
 			}
-
 		}
+		$("#directionList").append("<li>" + userLine[0].name + "</li>");
+		$("#directionList").append("<li>" + userLine[userLine.length - 1].name + "</li>");
 		closeNav();
+		openDirection()
 	})
 }
 
@@ -228,9 +287,24 @@ function closeNav () {
 
 
 function openDirection () {
+	$("#directionMenu").show();
 	document.getElementById("directionMenu").style.width = "370px";
 	document.getElementById("main").style.marginLeft = "370px";
 	document.getElementById("main").style.opacity = "0.3";
+	$("#directionList").css("color", lineColor);
+	$("li").click(function(){
+		document.getElementById("directionMenu").style.width = "0";
+		document.getElementById("main").style.marginLeft = "0";
+		document.getElementById("main").style.opacity = "1";
+		$("#directionMenu").hide();
+			if($(this).html() === userLine[0].name){
+				prevStation1 = //TODO GET THIS SHIT LOGIC'D DAMN.;
+				console.log(prevStation1);
+			}
+			else if ($(this).html() === userLine[userLine.length - 1].name){
+				prevStation1 = userLine
+			}
+	})
 }
 
 $(document).ready(function(){
@@ -238,7 +312,5 @@ $(document).ready(function(){
 	$("#stationMenu").hide();
 	$("#directionMenu").hide();
 	$("#main").hide();
-	console.log(redLine.length);
-	console.log(redCode.length);
 
 })
