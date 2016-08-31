@@ -8,6 +8,8 @@ var prevStation1 = "";
 var prevStation2 = "";
 var prevStation3 = "";
 
+var stationDisplay = [];//obj for the stations involved in main display
+
 //line arrays need to convert these to objects with Ids
 var redLine = [{"name":"Shady Grove", "id":"A15"},
 {"name":"Rockville", "id":"A14"},
@@ -172,6 +174,7 @@ var silverLine = [{"name":"Ashburn", "id":"N12"},
 
 
 function wait (){
+	/*setInterval(function(){*/
 	$(function() {
 		var params = {
 				"api_key": "abc3f2f368624a3b95358b442ceb43d5",
@@ -184,24 +187,33 @@ function wait (){
 		})
 		.done(function(data) {
 
+			if (data.Trains[0].Min == "BRD"){
+				 $("#arriveTime").html("Boarding");
+			}
+			else if (data.Trains[0].Min == "ARR"){
+				$("#arriveTime").html("Arriving");
+			}
+			else if (data.Trains[0].Car == null){
+				$("#arriveTime").html("No Passengers");
+				$("#carsnumber").html("No Passengers");
+			}
+			else {
+			$("#arriveTime").html(data.Trains[0].Min + " Min");
+			}
+			$("#destination").html(data.Trains[0].DestinationName);
+			$("#carsnumber").html(data.Trains[0].Car + " Car Train")
+
 				console.log(data);
-				if (data.Trains[0].Min == "BRD"){
-					 $("#arriveTime").html("Boarding");
-				}
-				else if (data.Trains[0].Min == "ARR"){
-					$("#arriveTime").html("Arriving");
-				}
-				else {
-				$("#arriveTime").html(data.Trains[0].Min + " Min");
-		}
-				$("#destination").html(data.Trains[0].DestinationName);
-				$("#carsnumber").html(data.Trains[0].Car + " Car Train")
+
 		})
 		.fail(function() {
 				alert("error");
 		});
 });
+/*}, 5000);//interval for refreshing*/
 }
+
+
 
 
 function lineSelect () {
@@ -249,7 +261,8 @@ function lineSelect () {
 			openListMenu();
 	});
 }
-function openListMenu () {
+
+function openListMenu () {//displays the list of station names
 	$("#stationMenu").show();
 	document.getElementById("stationMenu").style.width = "370px";
 	document.getElementById("main").style.marginLeft = "370px";
@@ -257,17 +270,15 @@ function openListMenu () {
 	stationSelect();
 	}
 
-function stationSelect() {
+function stationSelect() {//what to do when a staion is clicked
 	$("li").click(function(){
 		userStation = $(this).html();
 		for (var i = 0; i < userLine.length; i++){
 			if (userLine[i].name === userStation){
+				stationDisplay.push(userLine[i - 3].name, userLine[i - 2].name, userLine[i - 1].name, userLine[i].name, userLine[i + 1].name, userLine[i + 2].name, userLine[i + 3].name);//this pushes 3 in both directions from the user's station to be shortened later on the direciton selection.
 				stationCode = userLine[i].id;
-				console.log(userStation);
-				console.log(prevStation1);
-				console.log(prevStation2);
-				console.log(prevStation3);
-				wait();
+				console.log(stationDisplay);
+
 			}
 		}
 		$("#directionList").append("<li>" + userLine[0].name + "</li>");
@@ -277,7 +288,7 @@ function stationSelect() {
 	})
 }
 
-function closeNav () {
+function closeNav () {//generic close menu function
 	document.getElementById("stationMenu").style.width = "0";
 	document.getElementById("main").style.marginLeft = "0";
 	document.getElementById("main").style.opacity = "1";
@@ -285,7 +296,7 @@ function closeNav () {
 }
 
 
-function openDirection () {
+function openDirection () {//switches menu to direction list with end points.  What to do when direction is clicked.
 	$("#directionMenu").show();
 	document.getElementById("directionMenu").style.width = "370px";
 	document.getElementById("main").style.marginLeft = "370px";
@@ -296,13 +307,23 @@ function openDirection () {
 		document.getElementById("main").style.marginLeft = "0";
 		document.getElementById("main").style.opacity = "1";
 		$("#directionMenu").hide();
-			if($(this).html() === userLine[0].name){
-				prevStation1 = //TODO GET THIS SHIT LOGIC'D DAMN. Might need to push to an array the correct id and name of station.
-				console.log(prevStation1);
+			if ($(this).html() == userLine[0].name){
+				stationDisplay.splice(0, 3);
+				console.log(stationDisplay);
+				$("#stationLabel1").html(stationDisplay[0]);
+				$("#stationLabel2").html(stationDisplay[1]);
+				$("#stationLabel3").html(stationDisplay[2]);
+				$("#stationLabel4").html(stationDisplay[3]);
 			}
-			else if ($(this).html() === userLine[userLine.length - 1].name){
-				prevStation1 = userLine
+			else {
+				stationDisplay.splice(4, 3);
+				$("#stationLabel1").html(stationDisplay[0]);
+				$("#stationLabel2").html(stationDisplay[1]);
+				$("#stationLabel3").html(stationDisplay[2]);
+				$("#stationLabel4").html(stationDisplay[3]);
+				console.log(stationDisplay);
 			}
+			wait();
 	})
 }
 
@@ -311,5 +332,10 @@ $(document).ready(function(){
 	$("#stationMenu").hide();
 	$("#directionMenu").hide();
 	$("#main").hide();
+	$("#lineContainer").hide();
 
 })
+
+
+
+//during menu selects, make the main window the image of the line. Duh.

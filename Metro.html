@@ -13,14 +13,21 @@
 </head>
 <body>
 
-	<div class="navbar col-xs-12">
+<div class="navbar col-xs-12">
 		<div class="col-xs-2" id="logodiv">
 			<img id="metrologo" src="MetroLogo.png">
 		</div>
 		<div class="col-xs-5">
 			<h1 id="title">metro better.</h1>
 		</div>
+</div>
+
+<!-- container for line graphic displayed after line select, during line/direction select-->
+<div class="container-fluid" id="lineContainer">
+	<div class="lineGraphic">
 	</div>
+</div>
+
 
 <div id="main"><!-- Container for sliding menus -->
 	<div class="container-fluid">
@@ -47,10 +54,10 @@
 
 
 		<div class="row" id="stationnames"><!-- Station labels -->
-			<div class="col-xs-2 col-xs-offset-1 stationLabel" id="prevStation3Label"></div>
-			<div class="col-xs-2 col-xs-offset-1 stationLabel" id="prevStation2Label"></div>
-			<div class="col-xs-2 col-xs-offset-1 stationLabel" id="prevStation1Label"></div>
-			<div class="col-xs-2 col-xs-offset-1 stationLabel" id="yourStationLabel"></div>
+			<div class="col-xs-2 col-xs-offset-1 stationLabel" id="stationLabel1"></div>
+			<div class="col-xs-2 col-xs-offset-1 stationLabel" id="stationLabel2"></div>
+			<div class="col-xs-2 col-xs-offset-1 stationLabel" id="stationLabel3"></div>
+			<div class="col-xs-2 col-xs-offset-1 stationLabel" id="stationLabel4"></div>
 		</div>
 		<!-- Line graphic -->
 		<div class="row" id="linerow">
