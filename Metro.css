@@ -75,13 +75,7 @@ body{
 .maininfo{
 	margin: 0px 0px 10px 10px;
 }
-#linecolor{
-	color: red;
-}
-span{
-	color: red;
-	/*this should actually change with linebar selection */
-}
+
 /* Line Menu styles*/
 #lineModal {
 	height: 100%;
@@ -96,7 +90,7 @@ span{
 }
 
 .sidenav div {
-	padding: 8px 8px 8px 32px;
+	padding: 8px 32px 8px 32px;
 	text-align: center;
 	font-size: 25px;
 	display: block;
@@ -122,9 +116,15 @@ span{
 	transition: 0.5s;
 	overflow-x: auto;
 }
+#stationMenu h2 {
+	margin-left: 10px;
+}
+#stationMenu::-webkit-scrollbar{
+	display: none;
+}
 
 #stationList li {
-	padding: 8px 8px 8px 32px;
+	padding: 8px 32px 8px 32px;
 	text-decoration: none;
 	font-size: 16px;
 	/* set color on list population */
@@ -132,14 +132,20 @@ span{
 	opacity: 0.6;
 	border-bottom: solid 2px #3F4040
 }
+
+
 .closebtn {
 	position: absolute;
-	top: 155px;
-	right: 25px;
+	top: 140px;
+	right: 20px;
 	font-size: 36px;
 	margin-left: 50px;
 	color: white;
 	text-decoration: none;
+}
+.closebtn:hover{
+	text-decoration: none;
+	color: white;
 }
 
 #stationList li:hover {
@@ -161,13 +167,14 @@ span{
 	overflow-x: auto;
 }
 #directionList li {
-	padding: 8px 8px 8px 32px;
+	padding: 8px 32px 8px 32px;
 	text-decoration: none;
 	font-size: 16px;
 	/* set color on list population */
 	display: block;
 	opacity: 0.6;
-	border-bottom: solid 2px #3F4040
+	border-bottom: solid 2px #2E2E2E;
+
 }
 
 #directionList li:hover {
@@ -186,11 +193,11 @@ span{
 	height: 80px;
 }
 #RD{
-	background-color: red;
+	background-color: #e51434;
 	color: white;
 }
 #GR{
-	background-color: green;
+	background-color: #0eab4a;
 	color: white;
 }
 #YL{
@@ -202,10 +209,24 @@ span{
 	color: white;
 }
 #OR{
-	background: #FF7C0A;
+	background: #f38512;
 	color: white;
 }
 #SV{
-	background: grey;
+	background: #9d9f9d;
 	color: white
+}
+
+#lineContainer{
+	z-index: 50;
+	transition: margin-left .5s;
+	padding: 20px;
+	padding-top: 150px;
+	background-color: black;
+	margin-left: 370px;
+}
+
+#lineImg {
+	height: 100%;
+	width: 100%;
 }
