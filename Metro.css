@@ -1,5 +1,6 @@
 body{
 	background-color: black;
+	color: white;
 }
 .navbar{
 	background-color: white;
@@ -21,8 +22,16 @@ body{
 	clear: left;
 }
 
+#directionDisplay {
+	padding-top: 30px;
+}
+i {
+	padding: 15px;
+}
+
 #linerow{
-	padding-top: 50px;
+	margin-top: 70px;
+
 }
 
 .dropdown{
@@ -40,14 +49,14 @@ body{
 	height: 20px;
 	background-color: red;
 	margin-top: 23px;
-
 }
 
-.station{
-	border: solid 5px white;
-	border-radius: 50%;
-	height: 70px;
+.fa-arrow-left {
+	color: white;
+}
 
+.station {
+	margin-top: 5px;
 }
 
 .stationLabel{
@@ -60,6 +69,7 @@ body{
 
 #stationnames{
 	margin-top: 50px;
+	margin-bottom: 10px;
 }
 
 .info{
@@ -98,6 +108,7 @@ body{
 	cursor: pointer;
 	opacity: 0.5;
 }
+
 .sidenav div:hover {
 	opacity: 1;
 }
@@ -116,9 +127,11 @@ body{
 	transition: 0.5s;
 	overflow-x: auto;
 }
+
 #stationMenu h2 {
 	margin-left: 10px;
 }
+
 #stationMenu::-webkit-scrollbar{
 	display: none;
 }
@@ -130,9 +143,9 @@ body{
 	/* set color on list population */
 	display: block;
 	opacity: 0.6;
-	border-bottom: solid 2px #3F4040
+	border-bottom: solid 2px #3F4040;
+	cursor: pointer;
 }
-
 
 .closebtn {
 	position: absolute;
@@ -143,6 +156,7 @@ body{
 	color: white;
 	text-decoration: none;
 }
+
 .closebtn:hover{
 	text-decoration: none;
 	color: white;
@@ -166,6 +180,7 @@ body{
 	transition: 0.5s;
 	overflow-x: auto;
 }
+
 #directionList li {
 	padding: 8px 32px 8px 32px;
 	text-decoration: none;
@@ -174,7 +189,6 @@ body{
 	display: block;
 	opacity: 0.6;
 	border-bottom: solid 2px #2E2E2E;
-
 }
 
 #directionList li:hover {

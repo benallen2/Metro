@@ -1,61 +1,68 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous"><!-- font Awesome -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> <!-- bootstrap -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- bootstrap -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+	<!-- font Awesome -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- bootstrap -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<!-- bootstrap -->
 	<meta name="viewport" content="width=device-width">
 	<meta charset="UTF-8">
 	<title>Metro Better</title>
 	<link href="Metro.css" rel="stylesheet" type="text/css">
-	<script src="Metro.js" rel = "stylesheet" type="text/javascript"></script>
+	<script src="Metro.js" rel="stylesheet" type="text/javascript"></script>
 </head>
+
 <body>
 
-<div class="navbar col-xs-12">
+	<div class="navbar col-xs-12">
 		<div class="col-xs-2" id="logodiv">
 			<img id="metrologo" src="MetroLogo.png">
 		</div>
 		<div class="col-xs-5">
 			<h1 id="title">metro better.</h1>
 		</div>
-</div>
+	</div>
 
-<!-- container for line graphic displayed after line select, during line/direction select-->
-<div class="container-fluid col-xs-8 col-xs-offset-3" id="lineContainer">
-	<div class="row">
-		<div id="lineGraphic">
+	<!-- container for line graphic displayed after line select, during line/direction select-->
+	<div class="container-fluid col-xs-8 col-xs-offset-3" id="lineContainer">
+		<div class="row">
+			<div id="lineGraphic">
+			</div>
 		</div>
 	</div>
-</div>
 
 
-<div id="main"><!-- Container for sliding menus -->
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-xs-8 maininfo">
-				<div class="row">
-					<h2 class="info" id="arrival">Next Train: <span id="arriveTime"></span></h2>
-				</div>
-				<div class="row">
-					<h4 class="info">Train Color: <span id="traincolor"></span></h4>
-				</div>
-				<div class="row">
-					<h4 class="info">Destination: <span id="destination"></span></h4>
-				</div>
-				<div class="row">
-					<h4 class="info">Number of Cars: <span id="carsnumber"></span></h4>
-				</div>
+	<div id="main">
+		<!-- Container for sliding menus -->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-8 maininfo">
+					<div class="row">
+						<h2 class="info" id="arrival">Next Train: <span id="arriveTime"></span></h2>
+					</div>
+					<div class="row">
+						<h4 class="info">Train Color: <span id="traincolor"></span></h4>
+					</div>
+					<div class="row">
+						<h4 class="info">Destination: <span id="destination"></span></h4>
+					</div>
+					<div class="row">
+						<h4 class="info">Number of Cars: <span id="carsnumber"></span></h4>
+					</div>
 
-			</div>
-				<div class="col-xs-4 additionalinfo">
+				</div>
+				<div class="col-xs-4 additionalInfo">
 				</div>
 			</div>
 		</div>
 
 
-		<div class="row" id="stationnames"><!-- Station labels -->
+		<div class="row" id="stationnames">
+			<!-- Station labels -->
 			<div class="col-xs-2 col-xs-offset-1 stationLabel" id="stationLabel1"></div>
 			<div class="col-xs-2 col-xs-offset-1 stationLabel" id="stationLabel2"></div>
 			<div class="col-xs-2 col-xs-offset-1 stationLabel" id="stationLabel3"></div>
@@ -65,50 +72,56 @@
 		<div class="row" id="linerow">
 			<div class="linebar col-xs-1">
 			</div>
-			<div class="station col-xs-1" id="prevStation3">
-			</div>
+			<img src="../Images/station.png" class="col-xs-1 station" id="prevStation3" />
 			<div class="linebar col-xs-2">
 			</div>
-			<div class="station col-xs-1" id="prevStation2">
-			</div>
+			<img src="../Images/station.png" class="col-xs-1 station" id="prevStation2" />
 			<div class="linebar col-xs-2">
 			</div>
-			<div class="station col-xs-1" id="prevStation1">
-			</div>
+			<img src="../Images/station.png" class="col-xs-1 station" id="prevStation1" />
 			<div class="linebar col-xs-2">
 			</div>
-			<div class="station col-xs-1" id="yourStation">
-			</div>
+			<img src="../Images/station.png" class="col-xs-1 station" id="yourStation" />
 			<div class="linebar col-xs-1">
 			</div>
 		</div>
-</div>
+
+		<!-- Direction display -->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-3" id="displayDirection">
+				</div>
+			</div>
+		</div>
+
+	</div>
 
 
-<!-- line seleciton modal -->
-<div class="sidenav" id="lineModal">
-	<h2>Choose your Line:</h2>
+	<!-- line seleciton modal -->
+	<div class="sidenav" id="lineModal">
+		<h2>Choose your Line:</h2>
 		<div class="lineBtn" id="RD">Red Line</div>
 		<div class="lineBtn" id="GR">Green Line</div>
 		<div class="lineBtn" id="YL">Yellow Line</div>
 		<div class="lineBtn" id="BL">Blue Line</div>
 		<div class="lineBtn" id="OR">Orange Line</div>
 		<div class="lineBtn" id="SV">Silver Line</div>
-</div>
-<!-- Station Selector menu -->
-<div class="sidemenu" id="stationMenu">
-	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-	<h2>Select Your Station:</h2>
+	</div>
+	<!-- Station Selector menu -->
+	<div class="sidemenu" id="stationMenu">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<h2>Select Your Station:</h2>
 		<ul id="stationList">
 		</ul>
-</div>
-<!--direction menu -->
-<div class="sidemenu" id="directionMenu">
-	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-	<h2>Towards:</h2>
+	</div>
+	<!--direction menu -->
+	<div class="sidemenu" id="directionMenu">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<h2>Towards:</h2>
 		<ul id="directionList">
 		</ul>
-</div>
+	</div>
 
 </body>
+
 </html>
