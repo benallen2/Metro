@@ -501,7 +501,7 @@ function alerts() { //APPPEND IS NOT WORKING YET
 
                 for (var i = 0; i < data.Incidents.length; i++) {
                     if (data.Incidents[i].LinesAffected == lineCode + ";") {
-                        console.log(data.Incidents[0].IncidentType);
+                        console.log(data.Incidents[i].IncidentType);
                         $("#additionalInfo").append("<h6>" + data.Incidents[i].IncidentType + " : </h6><p>" + data.Incidents[i].Description + "</p>");
                     }
                 }
@@ -511,12 +511,11 @@ function alerts() { //APPPEND IS NOT WORKING YET
 }
 
 function wait() {
-
-    $(function() {
-        var params = {
-            "api_key": "abc3f2f368624a3b95358b442ceb43d5",
-            // Request parameters
-        };
+  $(function() {
+    var params = {
+        "api_key": "abc3f2f368624a3b95358b442ceb43d5",
+          // Request parameters
+      };
 
         $.ajax({
                 url: "https://api.wmata.com/StationPrediction.svc/json/GetPrediction/" + stationCode + "?" + $.param(params),
@@ -543,6 +542,7 @@ function wait() {
 function infoDisplay() {
     if (yourTrains[0].Min == "BRD") {
         $("#arriveTime").html("Boarding");
+
     } else if (yourTrains[0].Min == "ARR") {
         $("#arriveTime").html("Arriving");
     } else if (yourTrains[0].Car === null) {
@@ -598,43 +598,43 @@ function lineSelect() {
             case "RD":
                 lineColor = "#e51434";
                 userLine = redLine;
-                lineImg = "../Redline/RedLineFull.png";
+                lineImg = "./Redline/RedLineFull.png";
                 userColor = "Red";
                 break;
             case "GR":
                 lineColor = "#0eab4a";
                 userLine = greenLine;
-                lineImg = "../Greenline/GreenLineFull.png";
+                lineImg = "./Greenline/GreenLineFull.png";
                 userColor = "Green";
                 break;
             case "YL":
                 lineColor = "#EDCE00";
                 userLine = yellowLine;
-                lineImg = "../Yellowline/YellowLineFull.png";
+                lineImg = "./Yellowline/YellowLineFull.png";
                 userColor = "Yellow";
                 break;
             case "SV":
                 lineColor = "#9d9f9d";
                 userLine = silverLine;
-                lineImg = "../Silverline/SilverLineFull.png";
+                lineImg = "./Silverline/SilverLineFull.png";
                 userColor = "Silver";
                 break;
             case "BL":
                 lineColor = "#3381FF";
                 userLine = blueLine;
-                lineImg = "../Blueline/BlueLineFull.png";
+                lineImg = "./Blueline/BlueLineFull.png";
                 userColor = "Blue";
                 break;
             case "OR":
                 lineColor = "#f38512";
                 userLine = orangeLine;
-                lineImg = "../Orangeline/OrangeLineFull.png";
+                lineImg = "./Orangeline/OrangeLineFull.png";
                 userColor = "Orange";
                 break;
             default:
                 lineColor = "red";
                 userLine = redLine;
-                lineImg = "../Images/ColorMetro-1.png";
+                lineImg = "./Images/ColorMetro-1.png";
                 userColor = "Red";
                 break;
         } //switch for setting line color
@@ -642,13 +642,14 @@ function lineSelect() {
         $("#destination").css("color", lineColor);
         $("#carsnumber").css("color", lineColor);
         $(".linebar").css("background-color", lineColor);
+        $("#additionalInfo").css("color", lineColor);
         for (var i = 0; i < userLine.length; i++) {
             $("#stationList").append("<li>" + userLine[i].name + "</li>"); //creating the menu station list with names
             $("#stationList").css("color", lineColor);
         }
         openListMenu();
         $("#lineGraphic").append("<img src=" + lineImg + " id='lineImg' />");
-        alerts();
+
 
     });
 }
@@ -661,16 +662,15 @@ function openListMenu() { //displays the list of station names
     stationSelect();
 }
 
-function stationSelect() { //what to do when a staion is clicked***********THERE ARE ERRORS HERE***************
+function stationSelect() { //what to do when a station is clicked
     $("li").click(function() {
         userStation = $(this).html();
-        for (var i = 0; i < userLine.length; i++) {
-            if (userLine[i].name === userStation) {
-                stationDisplay.push(userLine[i - 3].name, userLine[i - 2].name, userLine[i - 1].name, userLine[i].name, userLine[i + 1].name, userLine[i + 2].name, userLine[i + 3].name); //this pushes 3 in both directions from the user's station to be shortened later on the direciton selection.
-                stationCode = userLine[i].id;
-                console.log(stationDisplay);
-            }
-        }
+
+      for (var j = 0; j < userLine.length; j++){//true for all instances, code is always what is clicked
+        if (userLine[j].name === userStation) {
+          stationCode = userLine[j].id;
+      }
+    }
         $("#directionList").append("<li>" + userLine[0].name + "</li>");
         $("#directionList").append("<li>" + userLine[userLine.length - 1].name + "</li>");
         closeNav();
@@ -685,8 +685,18 @@ function closeNav() { //generic close menu function
     document.getElementById("main").style.marginLeft = "0";
     document.getElementById("main").style.opacity = "1";
     $("#stationMenu").hide();
+    $("#directionMenu").hide();
 }
 
+Array.prototype.clean = function(deleteValue) {
+  for (var i = 0; i < this.length; i++) {
+    if (this[i] == deleteValue) {
+      this.splice(i, 1);
+      i--;
+    }
+  }
+   return this;
+};
 
 function openDirection() { //switches menu to direction list with end points.  What to do when direction is clicked.
     $("#directionMenu").show();
@@ -702,32 +712,47 @@ function openDirection() { //switches menu to direction list with end points.  W
         if ($(this).html() == userLine[0].name) {
             direction = "2";
             $("#displayDirection").append("<h3><i class='fa fa-arrow-left fa-2x' aria-hidden='true'></i> " + userLine[0].name + "</h3>");
-            stationDisplay.splice(0, 3);
+            for (var i = 0; i < userLine.length; i++){
+              if (userLine[i].name == userStation){
+                stationDisplay.push(userLine[i], userLine[i + 1], userLine[i + 2], userLine[i + 3]);
+                stationDisplay.clean(undefined);
+                console.log(stationDisplay);
+              }
+            }
+            for (var j = 0; j < stationDisplay.length; j++){
+              $("#stationnames").append("<div class='col-xs-2 col-xs-offset-1 stationLabel'>" + stationDisplay[j].name + "</div>");
+            }
 
-            console.log(direction);
-            $("#stationLabel1").html(stationDisplay[0]);
-            $("#stationLabel2").html(stationDisplay[1]);
-            $("#stationLabel3").html(stationDisplay[2]);
-            $("#stationLabel4").html(stationDisplay[3]);
-            $("#stationLabel1").css("border", "solid " + lineColor + " 1px");
-            $("#stationLabel1").css("border-radius", "20px");
-        } else {
+            $("#stationnames div:first").css("border", "solid " + lineColor + " 1px");
+            $("#stationnames div:first").css("border-radius", "20px");
+              console.log(stationDisplay);
+            }
+
+         else {
             direction = "1";
             $("#displayDirection").append("<h3> " + userLine[userLine.length - 1].name + "<i class='fa fa-arrow-right fa-2x' aria-hidden='true'></i></h3>");
             $("#displayDirection").addClass("col-xs-offset-9");
-            stationDisplay.splice(4, 3);
-            $("#stationLabel1").html(stationDisplay[0]);
-            $("#stationLabel2").html(stationDisplay[1]);
-            $("#stationLabel3").html(stationDisplay[2]);
-            $("#stationLabel4").html(stationDisplay[3]);
-            $("#stationLabel4").css("border", "solid " + lineColor + " 1px");
-            $("#stationLabel4").css("border-radius", "20px");
+            for (var k = 0; k < userLine.length; k++){
+              if (userLine[k].name == userStation){
+                stationDisplay.push(userLine[k], userLine[k - 1], userLine[k - 2], userLine[k - 3]);
+                stationDisplay.clean(undefined);
+                console.log(stationDisplay);
+              }
+            }
+            for (var l = stationDisplay.length - 1; l >= 0; l--){
+              $("#stationnames").append("<div class='col-xs-2 col-xs-offset-1 stationLabel'>" + stationDisplay[l].name + "</div>");
+
+            }
+            $("#stationnames div:last").css("border", "solid " + lineColor + " 1px");
+            $("#stationnames div:last").css("border-radius", "20px");
+
             console.log(direction);
         }
 
         $("#lineContainer").hide();
         $("#main").show();
         wait();
+        alerts();
         setInterval(wait, 5000);
     });
 }
@@ -737,5 +762,8 @@ $(document).ready(function() {
     $("#stationMenu").hide();
     $("#directionMenu").hide();
     $("#main").hide();
+    $("#reset").click(function(){
+      location.reload();
+    });
 
 });

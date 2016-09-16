@@ -19,11 +19,16 @@
 <body>
 
 	<div class="navbar col-xs-12">
-		<div class="col-xs-2" id="logodiv">
-			<img id="metrologo" src="MetroLogo.png">
-		</div>
-		<div class="col-xs-5">
-			<h1 id="title">metro better.</h1>
+		<div class="row">
+			<div class="col-xs-2" id="logodiv">
+				<img id="metrologo" src="MetroLogo.png">
+			</div>
+			<div class="col-xs-5">
+				<h1 id="title">metro better.</h1>
+			</div>
+			<div class="col-xs-3 col-xs-offset-2">
+				<div class="btn btn-default" id="reset">Choose A New Station</div>
+			</div>
 		</div>
 	</div>
 
@@ -36,11 +41,11 @@
 	</div>
 
 
-	<div id="main">
-		<!-- Container for sliding menus -->
+<div id="main">
+		<!-- Main container for sliding menus -->
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-xs-8 maininfo">
+				<div class="col-xs-12 maininfo">
 					<div class="row">
 						<h2 class="info" id="arrival">Next Train: <span id="arriveTime"></span></h2>
 					</div>
@@ -53,9 +58,6 @@
 					<div class="row">
 						<h4 class="info">Number of Cars: <span id="carsnumber"></span></h4>
 					</div>
-
-				</div>
-				<div class="col-xs-4 additionalInfo">
 				</div>
 			</div>
 		</div>
@@ -63,25 +65,22 @@
 
 		<div class="row" id="stationnames">
 			<!-- Station labels -->
-			<div class="col-xs-2 col-xs-offset-1 stationLabel" id="stationLabel1"></div>
-			<div class="col-xs-2 col-xs-offset-1 stationLabel" id="stationLabel2"></div>
-			<div class="col-xs-2 col-xs-offset-1 stationLabel" id="stationLabel3"></div>
-			<div class="col-xs-2 col-xs-offset-1 stationLabel" id="stationLabel4"></div>
+
 		</div>
 		<!-- Line graphic -->
 		<div class="row" id="linerow">
 			<div class="linebar col-xs-1">
 			</div>
-			<img src="../Images/station.png" class="col-xs-1 station" id="prevStation3" />
+			<img src="./Images/station.png" class="col-xs-1 station" id="prevStation3" />
 			<div class="linebar col-xs-2">
 			</div>
-			<img src="../Images/station.png" class="col-xs-1 station" id="prevStation2" />
+			<img src="./Images/station.png" class="col-xs-1 station" id="prevStation2" />
 			<div class="linebar col-xs-2">
 			</div>
-			<img src="../Images/station.png" class="col-xs-1 station" id="prevStation1" />
+			<img src="./Images/station.png" class="col-xs-1 station" id="prevStation1" />
 			<div class="linebar col-xs-2">
 			</div>
-			<img src="../Images/station.png" class="col-xs-1 station" id="yourStation" />
+			<img src="./Images/station.png" class="col-xs-1 station" id="yourStation" />
 			<div class="linebar col-xs-1">
 			</div>
 		</div>
@@ -94,7 +93,15 @@
 			</div>
 		</div>
 
-	</div>
+		<!-- alerts container -->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12" id="additionalInfo">
+				</div>
+			</div>
+		</div>
+
+</div>
 
 
 	<!-- line seleciton modal -->
